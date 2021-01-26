@@ -20,11 +20,13 @@ async def handler(update={}):
         else:
             username = ""
         if msg.startswith("/start"):
-            await bot.sendmessage(chat_id=chatid, text=f"Hi {mention}!\nI'm a full-async botapi class developed by <a href='tg://user?id=1006953642'>@Ninno</a>\nCommands: /async, /kb.", parse_mode='html', reply_to_message_id=messageid)
+            await bot.sendmessage(chat_id=chatid, text=f"Hi {mention}!\nI'm a full-async botapi class developed by <a href='tg://user?id=1006953642'>@Ninno</a>\nCommands: /async, /kb, /webrequest.", parse_mode='html', reply_to_message_id=messageid)
         if msg.startswith("/kb"):
             kb = {"inline_keyboard": [[{"text": "Hi!", "url": "t.me/ninno"}]]}
             await bot.sendmessage(chat_id=chatid, text="Inline keyboard.", reply_markup=kb, reply_to_message=messageid)
-
+        if msg.startswith("/webrequest"):
+            my_ip = (await bot.webRequest(url="http://www.randomnumberapi.com/api/v1.0/random", type="get"))[0]
+            await bot.sendmessage(chat_id=chatid, text=f"Random number: {my_ip}")
         if msg.startswith("/async"):
             await bot.sendmessage(chat_id=chatid, text="1")
             await asyncio.sleep(5)
@@ -41,6 +43,6 @@ startup_info = Shows bot info when you start the script
                DEFAULT: False
 """
 
-token = "YOUR:BOT_TOKEN"
-bot = ninnobotapi(token=token, handler_function=handler, startup_info=True) #initializing
-bot.startPolling() #start updates polling
+
+bot = ninnobotapi(token="1158940416:AAEUW3yNOsVytLSUeO_Vpbv_JdzuHhLHcG0", handler_function=handler, endpoint="http://ubuntu.casa.local:8080", startup_info=True) #initializing
+bot.startPolling() #start bot updates polling
