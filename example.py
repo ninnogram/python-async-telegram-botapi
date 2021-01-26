@@ -27,8 +27,8 @@ async def handler(update={}):
         if msg.startswith("/webrequest"):
 
             message = (await bot.sendmessage(chat_id=chatid, text=f"Wait..."))['message_id']
-            my_ip = (await bot.webRequest(url="http://www.randomnumberapi.com/api/v1.0/random", type="get"))[0]
-            await bot.editmessagetext(chat_id=chatid, text=f"Random number: {my_ip}", message_id=message)
+            random = (await bot.webRequest(url="http://www.randomnumberapi.com/api/v1.0/random", type="get"))[0]
+            await bot.editmessagetext(chat_id=chatid, text=f"Random number: {random}", message_id=message)
         if msg.startswith("/async"):
             await bot.sendmessage(chat_id=chatid, text="1")
             await asyncio.sleep(5)
