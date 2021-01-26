@@ -30,4 +30,4 @@ bot.[sendMessage](https://core.telegram.org/bots/api#sendmessage)(chat_id=userID
 ## Telegram Link
 If you have any trouble you can join the [official discussion group](https://t.me/NinnoBots/6)
 
-©️ (Ninno)[https://t.me/ninno]
+©️ [Ninno](https://t.me/ninno)
