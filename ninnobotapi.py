@@ -8,6 +8,21 @@ class ninnobotapi:
         except KeyboardInterrupt:
             print("Bye")
             sys.exit()
+    async def webRequest(self, url=False, data=[], r='json', type="get"):
+        if url != False:
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.request(type, url, data=data) as resp:
+                        if r == 'json':
+                            data = await resp.json()
+                        else:
+                            data = await resp
+                        return data
+            except Exception as e:
+                print(e)
+                return False
+
+
     #ASYNC Api Requests
     async def apiRequest(self, method='getme', params=[]):
         url = '{}/bot{}/{}'.format(self.endpoint, self.token, method)
@@ -24,6 +39,8 @@ class ninnobotapi:
     def __getattr__(self, method):
         async def function(**kwargs):
             #Polling method
+            if method.lower == "webrequest":
+                return
             if method == "Polling":
                 if self.handler != None:
                     update_id = 0
