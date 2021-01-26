@@ -46,5 +46,5 @@ startup_info = Shows bot info when you start the script
 """
 
 
-bot = ninnobotapi(token="urtoken", handler_function=handler, startup_info=True) #initializing
+bot = ninnobotapi(token="1158940416:AAHBU8_B5fvpJ-ThZ1OHChGsGYME", handler_function=handler, startup_info=True) #initializing
 bot.startPolling() #start bot updates polling
